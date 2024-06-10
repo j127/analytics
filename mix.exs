@@ -115,7 +115,7 @@ defmodule Plausible.MixProject do
       {:php_serializer, "~> 2.0"},
       {:plug, "~> 1.13", override: true},
       {:plug_cowboy, "~> 2.3"},
-      {:postgrex, "~> 0.17.0"},
+      {:postgrex, "~> 0.18.0"},
       {:prom_ex, "~> 1.8"},
       {:public_suffix, git: "https://github.com/axelson/publicsuffix-elixir"},
       {:ref_inspector, "~> 2.0"},

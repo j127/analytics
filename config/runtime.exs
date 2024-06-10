@@ -327,13 +327,7 @@ if is_nil(db_socket_dir) do
   config :plausible, Plausible.Repo,
     url: db_url,
     socket_options: maybe_ipv6,
-    ssl_opts: [
-      cacertfile: db_cacertfile,
-      verify: :verify_peer,
-      customize_hostname_check: [
-        match_fun: :public_key.pkix_verify_hostname_match_fun(:https)
-      ]
-    ]
+    ssl: [cacertfile: db_cacertfile]
 else
   config :plausible, Plausible.Repo,
     socket_dir: db_socket_dir,
