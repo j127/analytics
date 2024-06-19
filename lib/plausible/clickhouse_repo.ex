@@ -15,14 +15,7 @@ defmodule Plausible.ClickhouseRepo do
   end
 
   @impl Ecto.Repo
-  def prepare_query(operation, query, opts) do
-    if Plausible.DebugReplayInfo.super_admin?() do
-      Plausible.DebugReplayInfo.track_query(
-        to_inline_sql(operation, query),
-        opts[:label] || "unlabelled"
-      )
-    end
-
+  def prepare_query(_operation, query, opts) do
     {query, include_log_comment(opts)}
   end
 
@@ -65,14 +58,15 @@ defmodule Plausible.ClickhouseRepo do
   defp include_log_comment(opts) do
     sentry_context = Sentry.Context.get_all()
 
-    log_comment = %{
-      user_id: sentry_context[:user][:id],
-      label: opts[:label] || "unlabelled",
-      url: sentry_context[:request][:url],
-      domain: sentry_context[:extra][:domain],
-      site_id: sentry_context[:extra][:site_id],
-      metadata: opts[:metadata] || %{}
-    }
+    log_comment =
+      %{
+        user_id: sentry_context[:user][:id],
+        label: opts[:label] || "unlabelled",
+        url: sentry_context[:request][:url],
+        domain: sentry_context[:extra][:domain],
+        site_id: sentry_context[:extra][:site_id],
+        metadata: opts[:metadata] || %{}
+      }
 
     case Jason.encode(log_comment) do
       {:ok, encoded} ->

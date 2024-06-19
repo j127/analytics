@@ -58,7 +58,7 @@ defmodule Plausible.Stats.Timeseries do
     |> select_bucket(:events, site, query)
     |> Imported.merge_imported_timeseries(site, query, metrics)
     |> maybe_add_timeseries_conversion_rate(site, query, metrics)
-    |> ClickhouseRepo.all()
+    |> ClickhouseRepo.all(label: :event_ts)
   end
 
   defp sessions_timeseries(_, _, []), do: []
@@ -68,7 +68,7 @@ defmodule Plausible.Stats.Timeseries do
     |> filter_converted_sessions(site, query)
     |> select_bucket(:sessions, site, query)
     |> Imported.merge_imported_timeseries(site, query, metrics)
-    |> ClickhouseRepo.all()
+    |> ClickhouseRepo.all(label: :session_ts)
     |> Util.keep_requested_metrics(metrics)
   end
 

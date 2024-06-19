@@ -161,13 +161,13 @@ defmodule Plausible.Props do
         select: %{key: fragment("arrayJoin(?)", field(e, :"meta.key"))}
 
     Plausible.ClickhouseRepo.all(
-      from uk in subquery(unnested_keys),
+      (from uk in subquery(unnested_keys),
         where: uk.key not in ^allowed_event_props,
         where: uk.key not in ^@internal_keys,
         group_by: uk.key,
         select: uk.key,
         order_by: {:desc, count(uk.key)},
-        limit: ^limit
+        limit: ^limit), label: :suggested_keys
     )
   end
 

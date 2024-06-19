@@ -75,7 +75,8 @@ defmodule PlausibleWeb.StatsController do
           flags: get_flags(conn.assigns[:current_user], site),
           is_dbip: is_dbip(),
           dogfood_page_path: dogfood_page_path,
-          load_dashboard_js: true
+          load_dashboard_js: true,
+          connect_live_socket: Plausible.Auth.is_super_admin?(conn.assigns[:current_user])
         )
 
       !stats_start_date && can_see_stats? ->

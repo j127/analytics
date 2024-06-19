@@ -1,4 +1,12 @@
-<nav class="relative z-20 py-8">
+<nav class="relative z-20 py-8" x-data="{debug: false}">
+  <div x-show="debug" x-cloak>
+    <%= if Plausible.Auth.is_super_admin?(@conn.assigns[:current_user]) && @conn.assigns[:site] do %>
+      <%= live_render(@conn, PlausibleWeb.Live.Debug,
+        session: %{"site_id" => @conn.assigns[:site].id}
+      ) %>
+    <% end %>
+  </div>
+
   <div class="container print:max-w-full">
     <nav class="relative flex items-center justify-between sm:h-10 md:justify-center">
       <div class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
@@ -27,6 +35,13 @@
         <%= cond do %>
           <% @conn.assigns[:current_user] -> %>
             <ul class="flex items-center w-full sm:w-auto">
+              <%= if Plausible.Auth.is_super_admin?(@conn.assigns.current_user) do %>
+                <li>
+                  <a x-data x-on:click="debug = !debug" class="cursor-pointer">
+                    <Heroicons.bug_ant class="text-gray-700 h-4 w-4 dark:text-gray-200" />
+                  </a>
+                </li>
+              <% end %>
               <li
                 :if={ee?() and Plausible.Users.on_trial?(@conn.assigns[:current_user])}
                 class="hidden mr-6 sm:block"
