@@ -7,7 +7,6 @@ defmodule Plausible.Repo.Migrations.AddGoalDisplayName do
     end
 
     fill_display_names()
-
   end
 
   def fill_display_names do
