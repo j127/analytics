@@ -1,4 +1,4 @@
-defmodule Plausible.Repo.Migrations.AddGoalDisplayName do
+defmodule Plausible.Repo.Migrations.MakeGoalDisplayNamesUnique do
   use Ecto.Migration
 
   def change do
