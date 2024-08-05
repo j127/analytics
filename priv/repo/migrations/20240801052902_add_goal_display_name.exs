@@ -6,6 +6,8 @@ defmodule Plausible.Repo.Migrations.AddGoalDisplayName do
       add :display_name, :text
     end
 
+    create unique_index(:goals, [:site_id, :display_name])
+
     fill_display_names()
   end
 
