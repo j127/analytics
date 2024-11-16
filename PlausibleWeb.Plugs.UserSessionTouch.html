@@ -8,13 +8,13 @@
     <meta name="project" content="Plausible v0.0.1">
 
 
-    <title>PlausibleWeb.FormHelpers — Plausible v0.0.1</title>
+    <title>PlausibleWeb.Plugs.UserSessionTouch — Plausible v0.0.1</title>
     <link rel="stylesheet" href="dist/html-elixir-FM2CSD74.css" />
 
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-43PMFBC7.js"></script>
-    <script src="dist/sidebar_items-3C878EF3.js"></script>
+    <script src="dist/sidebar_items-36A8F48E.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -131,16 +131,20 @@ Pages
 
 <h1>
 
-    <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/views/form_helpers.ex#L1" title="View Source" class="icon-action" rel="help">
+    <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/plugs/user_session_touch.ex#L1" title="View Source" class="icon-action" rel="help">
       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
       <span class="sr-only">View Source</span>
     </a>
 
-  <span translate="no">PlausibleWeb.FormHelpers</span> 
+  <span translate="no">PlausibleWeb.Plugs.UserSessionTouch</span> 
   <small class="app-vsn" translate="no">(Plausible v0.0.1)</small>
 
 </h1>
 
+
+  <section id="moduledoc">
+<p>Plug for bumping timeout on user session on every dashboard request.</p>
+  </section>
 
 
   <section id="summary" class="details-list">
@@ -157,7 +161,7 @@ Pages
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#styled_error/1" translate="no">styled_error(error)</a>
+        <a href="#call/2" translate="no">call(conn, opts)</a>
 
       </div>
 
@@ -165,23 +169,7 @@ Pages
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#styled_label/4" translate="no">styled_label(form, field, text, opts \\ [])</a>
-
-      </div>
-
-    </div>
-
-    <div class="summary-row">
-      <div class="summary-signature">
-        <a href="#styled_select/4" translate="no">styled_select(form, field, options, opts \\ [])</a>
-
-      </div>
-
-    </div>
-
-    <div class="summary-row">
-      <div class="summary-signature">
-        <a href="#styled_text_input/3" translate="no">styled_text_input(form, field, opts \\ [])</a>
+        <a href="#init/1" translate="no">init(opts \\ [])</a>
 
       </div>
 
@@ -200,16 +188,16 @@ Pages
       <span class="text">Functions</span>
     </h1>
     <div class="functions-list">
-<section class="detail" id="styled_error/1">
+<section class="detail" id="call/2">
 
   <div class="detail-header">
-    <a href="#styled_error/1" class="detail-link" title="Link to this function">
+    <a href="#call/2" class="detail-link" title="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature" translate="no">styled_error(error)</h1>
+    <h1 class="signature" translate="no">call(conn, opts)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/views/form_helpers.ex#L42" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/plugs/user_session_touch.ex#L14" class="icon-action" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -222,66 +210,18 @@ Pages
 
   </section>
 </section>
-<section class="detail" id="styled_label/4">
+<section class="detail" id="init/1">
 
-    <span id="styled_label/3"></span>
+    <span id="init/0"></span>
 
   <div class="detail-header">
-    <a href="#styled_label/4" class="detail-link" title="Link to this function">
+    <a href="#init/1" class="detail-link" title="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature" translate="no">styled_label(form, field, text, opts \\ [])</h1>
+    <h1 class="signature" translate="no">init(opts \\ [])</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/views/form_helpers.ex#L3" class="icon-action" rel="help" title="View Source">
-       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
-     </a>
-
-
-  </div>
-
-  <section class="docstring">
-
-
-  </section>
-</section>
-<section class="detail" id="styled_select/4">
-
-    <span id="styled_select/3"></span>
-
-  <div class="detail-header">
-    <a href="#styled_select/4" class="detail-link" title="Link to this function">
-      <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature" translate="no">styled_select(form, field, options, opts \\ [])</h1>
-
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/views/form_helpers.ex#L31" class="icon-action" rel="help" title="View Source">
-       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
-     </a>
-
-
-  </div>
-
-  <section class="docstring">
-
-
-  </section>
-</section>
-<section class="detail" id="styled_text_input/3">
-
-    <span id="styled_text_input/2"></span>
-
-  <div class="detail-header">
-    <a href="#styled_text_input/3" class="detail-link" title="Link to this function">
-      <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature" translate="no">styled_text_input(form, field, opts \\ [])</h1>
-
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/views/form_helpers.ex#L14" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/plugs/user_session_touch.ex#L10" class="icon-action" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>

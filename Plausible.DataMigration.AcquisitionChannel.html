@@ -8,13 +8,13 @@
     <meta name="project" content="Plausible v0.0.1">
 
 
-    <title>PlausibleWeb.RefInspector — Plausible v0.0.1</title>
+    <title>Plausible.DataMigration.AcquisitionChannel — Plausible v0.0.1</title>
     <link rel="stylesheet" href="dist/html-elixir-FM2CSD74.css" />
 
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-43PMFBC7.js"></script>
-    <script src="dist/sidebar_items-3C878EF3.js"></script>
+    <script src="dist/sidebar_items-36A8F48E.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -131,16 +131,22 @@ Pages
 
 <h1>
 
-    <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/refinspector.ex#L1" title="View Source" class="icon-action" rel="help">
+    <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/data_migration/acquisition_channel.ex#L1" title="View Source" class="icon-action" rel="help">
       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
       <span class="sr-only">View Source</span>
     </a>
 
-  <span translate="no">PlausibleWeb.RefInspector</span> 
+  <span translate="no">Plausible.DataMigration.AcquisitionChannel</span> 
   <small class="app-vsn" translate="no">(Plausible v0.0.1)</small>
 
 </h1>
 
+
+  <section id="moduledoc">
+<p>Creates dictionaries and functions to calculate acquisition channel in ClickHouse</p><p>Creates <code class="inline">acquisition_channel</code> columns in <code class="inline">events_v2</code> and <code class="inline">sessions_v2</code> tables.
+Run via <code class="inline">Plausible.DataMigration.AcquisitionChannel.run(options)</code></p><p>Options:</p><ul><li><code class="inline">add_column</code> - creates the materialized column. Already done in a migration</li><li><code class="inline">update_column</code> - Updates the column definition to use new function definitions. Defaults to true.
+  Note that historical data is only updated if <code class="inline">backfill</code> is set to true or if it was never materialized.</li><li><code class="inline">backfill</code> - backfills the data for the column. Speeds up calculations on historical data.</li></ul><p>SQL files available at: priv/data_migrations/AcquisitionChannel/sql</p>
+  </section>
 
 
   <section id="summary" class="details-list">
@@ -157,7 +163,7 @@ Pages
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#format_referrer/1" translate="no">format_referrer(uri)</a>
+        <a href="#confirm/3" translate="no">confirm(message, func, default_choice \\ :yes)</a>
 
       </div>
 
@@ -165,7 +171,7 @@ Pages
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#parse/1" translate="no">parse(ref)</a>
+        <a href="#do_run/3" translate="no">do_run(name, query, options \\ [])</a>
 
       </div>
 
@@ -173,7 +179,43 @@ Pages
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#right_uri?/1" translate="no">right_uri?(arg1)</a>
+        <a href="#run/1" translate="no">run(opts \\ [])</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#run_sql/3" translate="no">run_sql(name, assigns \\ [], options \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Runs a single SQL query in a file.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#run_sql_confirm/3" translate="no">run_sql_confirm(name, assigns \\ [], options \\ [])</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#run_sql_multi/3" translate="no">run_sql_multi(name, assigns \\ [], options \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Runs multiple SQL queries from a single file.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#unwrap/2" translate="no">unwrap(name, assigns \\ [])</a>
 
       </div>
 
@@ -192,16 +234,18 @@ Pages
       <span class="text">Functions</span>
     </h1>
     <div class="functions-list">
-<section class="detail" id="format_referrer/1">
+<section class="detail" id="confirm/3">
+
+    <span id="confirm/2"></span>
 
   <div class="detail-header">
-    <a href="#format_referrer/1" class="detail-link" title="Link to this function">
+    <a href="#confirm/3" class="detail-link" title="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature" translate="no">format_referrer(uri)</h1>
+    <h1 class="signature" translate="no">confirm(message, func, default_choice \\ :yes)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/refinspector.ex#L18" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/data_migration/acquisition_channel.ex#L16" class="icon-action" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -214,16 +258,18 @@ Pages
 
   </section>
 </section>
-<section class="detail" id="parse/1">
+<section class="detail" id="do_run/3">
+
+    <span id="do_run/2"></span>
 
   <div class="detail-header">
-    <a href="#parse/1" class="detail-link" title="Link to this function">
+    <a href="#do_run/3" class="detail-link" title="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature" translate="no">parse(ref)</h1>
+    <h1 class="signature" translate="no">do_run(name, query, options \\ [])</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/refinspector.ex#L2" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/data_migration/acquisition_channel.ex#L16" class="icon-action" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -236,16 +282,120 @@ Pages
 
   </section>
 </section>
-<section class="detail" id="right_uri?/1">
+<section class="detail" id="run/1">
+
+    <span id="run/0"></span>
 
   <div class="detail-header">
-    <a href="#right_uri?/1" class="detail-link" title="Link to this function">
+    <a href="#run/1" class="detail-link" title="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature" translate="no">right_uri?(arg1)</h1>
+    <h1 class="signature" translate="no">run(opts \\ [])</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/refinspector.ex#L23" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/data_migration/acquisition_channel.ex#L18" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="run_sql/3">
+
+    <span id="run_sql/1"></span>
+
+    <span id="run_sql/2"></span>
+
+  <div class="detail-header">
+    <a href="#run_sql/3" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">run_sql(name, assigns \\ [], options \\ [])</h1>
+
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/data_migration/acquisition_channel.ex#L16" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Runs a single SQL query in a file.</p><p>Valid options:</p><ul><li><code class="inline">quiet</code> - reduces output from running the SQL</li><li><code class="inline">params</code> - List of query parameters.</li><li><code class="inline">query_options</code> - passed to Repo.query</li></ul>
+  </section>
+</section>
+<section class="detail" id="run_sql_confirm/3">
+
+    <span id="run_sql_confirm/1"></span>
+
+    <span id="run_sql_confirm/2"></span>
+
+  <div class="detail-header">
+    <a href="#run_sql_confirm/3" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">run_sql_confirm(name, assigns \\ [], options \\ [])</h1>
+
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/data_migration/acquisition_channel.ex#L16" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="run_sql_multi/3">
+
+    <span id="run_sql_multi/1"></span>
+
+    <span id="run_sql_multi/2"></span>
+
+  <div class="detail-header">
+    <a href="#run_sql_multi/3" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">run_sql_multi(name, assigns \\ [], options \\ [])</h1>
+
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/data_migration/acquisition_channel.ex#L16" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Runs multiple SQL queries from a single file.</p><p>Note that each query must be separated by semicolons.</p>
+  </section>
+</section>
+<section class="detail" id="unwrap/2">
+
+    <span id="unwrap/1"></span>
+
+  <div class="detail-header">
+    <a href="#unwrap/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">unwrap(name, assigns \\ [])</h1>
+
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible/data_migration/acquisition_channel.ex#L16" class="icon-action" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
